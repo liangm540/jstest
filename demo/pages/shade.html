@@ -1,0 +1,104 @@
+<!-- **********************************************************************************
+*Description: 遮罩层demo:点击弹出框外的部分遮罩层消失 事件委托！
+*author:      liangm(1650984858@qq.com)
+*date:        2017.8.7
+*************-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>遮罩层</title>
+    <!-- <link rel="stylesheet" href="../resources/reset.css"> -->
+    <style type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .h{
+            width: 600px;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            margin: auto;
+            font-size: 30px;
+
+        }
+        .click{
+            display: block;
+            width: 50px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            margin: auto;
+            background: yellow;
+            border: 2px black;
+            
+        }
+        .content{
+            width: 100%;
+            height: 100%;
+            background: black;
+            position: absolute;
+            display: none;
+            top: 0px;
+            left: 0px;
+            opacity: 0.8;
+            color: #fff;
+        }
+        .contain{
+            width: 300px;
+            height: 300px;
+            background:red;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin:-150px 0 0 -150px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="h">hello world</h1>
+    <a  class="click" id="j_click" >点我</a>
+    <div class="content" id="j_content">
+        <div class="contain" id="j_contain"> 
+            <input type="text" value="">
+            <button id='j_close'>点击关闭</button>
+        </div>
+   </div>
+   <script>
+        var click = document.getElementById('j_click'),
+            close = document.getElementById('j_close'),
+            contain = document.getElementById('j_contain'),
+            content = document.getElementById('j_content');
+        click.onclick = function () {
+
+            content.style.display = "block";
+            // console.log(event);
+            
+        };
+        close.onclick = function () {
+            content.style.display = "none";
+        };
+        content.onclick = function () {
+            console.log(event.target);
+            console.log(this);
+            content.style.display = "none";
+        };
+        contain.onclick = function (e) {
+
+            //立即停止事件的传播
+            // e.stopPropagation();
+        }
+
+
+   </script>
+</body>
+</html>

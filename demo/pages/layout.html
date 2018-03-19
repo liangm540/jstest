@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>两列布局：左边定宽 右边自适应</title>
+	<style>
+		*{
+			margin:0px;
+			padding: 0px;
+		}
+		div{
+			width: 150px;
+			height: 30px;
+			background: red;
+			border: 1px solid black;
+			margin:0 0 10px 0;
+		}
+		.relative{
+			position: relative;
+			left: 20px;
+			top: 20px;
+		}
+		.absolute{
+			width: 100px;
+			background: black;
+			position: absolute;
+			left: 20px;
+			top: 20px;
+			bottom: 20px;
+			right: 20px;
+		}
+		.contain{
+			width: 500px;
+			height: 500px;
+			background: yellow;
+			/*margin-top: 50px;*/
+			/*position: relative;*/
+			top: 50px;
+			/*opacity: 0.5;*/
+		}
+		.wrap{
+			width: 600px;
+			height: 700px;
+			background: #ddd;
+			position: relative;
+			margin-top: 50px;
+			top: 50px;
+			padding-top: 50px;
+		}
+		.fixed{
+			position: fixed;
+			left: 20px;
+			top: 20px;
+		}
+		/*#left_self,#right_self{ 
+			width: 200px;
+			height: 200px; 
+			background-color: #ffe6b8 ;
+		}  
+		#left_self {
+			float: left;
+		}  
+		#right_self{
+			float: right;
+		}  
+		#center_self{
+			margin: 0 210px;
+			height: 200px; 
+			background-color: #a0b3d6;
+		}  */
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="contain">
+			<div class="static">static</div>
+			<div class="relative">relative</div>
+			
+			<div class="absolute">absolute</div>
+			<div class="fixed">fixed</div>
+			<div>正常位置</div>
+		</div>
+	</div>
+	
+	<!-- <h3>使用自身浮动法定位</h3>  
+	<div id = "left_self">我是左边</div>  
+	<div id = "right_self">我是右边</div>  
+	<div id = "center_self">我是中间</div>   -->
+	<!-- <div>relative</div> -->
+	
+	<script></script>
+</body>
+</html>

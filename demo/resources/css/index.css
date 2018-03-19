@@ -1,0 +1,35 @@
+.main{
+    width: 250px;
+    margin:20px auto;
+    padding: 5px;
+    border: 8px solid #eee;
+    border-radius: 5px;
+}
+.main li{
+    width: 240px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 8px;
+    background: #aec;
+    margin: 0 auto 1px;
+}
+.dis{
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+}
+.childdis{
+    display: none;
+}
+.childdis li{
+    width: 240px;
+    height:30px;
+    line-height: 30px;
+    padding-left: 8px;
+    background: #ebc;
+    margin: 0 auto 1px;
+}
+.childdis a{
+    color: #fff;
+    font-size: 12px;
+}

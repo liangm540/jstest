@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时时钟</title>
+	<style>
+		.contain{
+			width: 260px;
+			height: 100px;
+			margin:20px auto;
+			padding: 10px;
+			text-align: center;
+			color: white;
+			background: black;
+		}
+		input{
+			width: 60px;
+			height: 20px;
+			margin: 20px 5px;
+			text-align: center;
+		}
+		button{
+			width: 200px;
+			height: 30px;
+			border: 2px solid black;
+			border-radius: 5px;
+			background: green;
+			color: white;
+			font:18px bold;
+			cursor: pointer;
+			text-align: center;
+		}
+		.bgc{
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="contain">
+		分：<input type="text" id="minute" >
+		秒：<input type="text" id="second">
+		<button id="start">启 动</button>
+	</div>
+	<script>
+		var minute = document.getElementById("minute"),
+			second = document.getElementById("second"),
+			start = document.getElementById("start"),
+			mvalue = minute.value,
+			svalue  = second.value;
+		//input中只能输入非负整数 并且秒数要小于60  正则验证
+		var pattern = /^\d+$/;
+		minute.onblur = function () {
+			if (!pattern.test(minute.value)) {
+				alert("只能输入正整数");
+				minute.value= "";
+			}
+		};
+		second.onblur =function () {
+			// console.log(second.value);
+			if (!(pattern.test(second.value) && second.value <= 60)) {
+				alert("只能输入<60的正整数");
+				second.value = "";
+			}
+		};
+		//倒计时函数
+		function settime(m,s) {
+			s--;
+			if ( m > 0 && s < 0) {
+					m--;
+					s=60;
+			}
+			else if(m == 0  && s < 0) {
+				m = 0;
+				s = 0;
+				return(true);
+			}
+			
+			console.log(m,s);
+			minute.value=m;
+			second.value = s;
+			t = setTimeout(function () {
+				settime(m,s);
+			},500);
+		};
+		// 点击函数
+		start.onclick = function () {
+			minute.disabled = "true";
+			second.disabled = "true";
+			start.classList.toggle("bgc");
+			if (start.classList.contains("bgc")) {
+				settime(minute.value,second.value);
+				start.innerHTML = "取 消";
+			}
+			else {
+				start.innerHTML = "启 动";
+				//暂停 settimeout()返回一个id id给cleartimeout为参数
+				clearTimeout(t) 
+			}
+			
+		}
+		
+	</script>
+</body>
+</html>

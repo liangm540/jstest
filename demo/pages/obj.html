@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>实例 对象 原型</title>
+</head>
+<body>
+	<script>
+	// 	function Person() {
+			
+	// 	}
+	// 	Person.prototype.name = "Nicholas"; 
+	// 　　Person.prototype.age = 29; 
+	// 　　Person.prototype.job = "Software Engineer"; 
+	// 　　Person.prototype.sayName = function(){ 
+	// 　　　　alert(this.name); 
+	// 　　}; 
+	// 　　var person1 = new Person();
+
+	// 　　var person2 = new Person(); 
+
+	// 　　person1.name = "Greg"; 
+	// 	person1.city = "wuhan"
+	// 　　console.log(person1.name); //"Greg"——来自实例
+	// 　　console.log(person2.name); //"Nicholas"——来自原型
+	// 	Person.prototype.name = "liagnm"; 
+	// 	console.log(person1.name); //"Greg"——来自实例
+	// 　　console.log(person2.name);
+	// 	console.log(Person.prototype.city); 
+	// 	console.log(person1.city);
+	// 	console.log(person2.city);
+	var obj = {a : 1,b:2}; 
+	(function (obj) { 
+		// 修改传进来的参数的属性
+		obj.a = 4;
+		//创建一个新对象
+		obj = {a : 2}; 
+		console.log(obj);
+	})(obj); //立即执行函数
+	//()将函数声明转化成函数表达式 ，内部定义的变量不会和外部的冲突
+	console.log(obj);
+	//问obj怎么变？
+	</script>
+</body>
+</html>

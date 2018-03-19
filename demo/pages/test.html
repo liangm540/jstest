@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../resources/css/reset.css">
+    <script type="text/javascript">
+    //函数覆盖
+    // function addnum (num) {
+    //     return num+100;
+    // }
+    // function addnum (num) {
+    //     return num+200;
+    // }
+    // var result=addnum(100);//result = 300 下面的函数定义覆盖了上面的
+
+    //函数重载
+    // function sum (a) {
+    //     return(a*a);
+    // }
+    // function sum (a,b) {
+    //     return(a+b);
+    // }
+    // var value1 = sum(3);
+    // var value2 = sum(2,4);
+    // console.log(value1,value2);
+    // NaN 6
+    //只能覆盖 不能重载
+    
+
+    //函数变量作用域链
+    // var color = "blue";
+    // function changecolor () {
+    //     if (color == "blue") {
+    //         color = "red"
+    //     }
+    //     else {
+    //         color = "black"
+    //     }
+
+    // }
+    // changecolor();
+
+    // alert(color);
+
+
+
+    //函数变量的执行环境
+    // var color = "blue";
+    // function changecolor () {
+    //     var anothercolor = "red";
+    //     function swapcolor () {
+    //         var temcolor = anothercolor;
+    //         anothercolor = color;
+    //         color = "black";
+    //         alert(color+"+"+anothercolor+"+"+temcolor);
+    //     }//swapcolor函数
+    //     swapcolor();
+    //     alert(color+anothercolor);
+    //     //在changecolor函数中找不到 temcolor
+    // }//changecolor函数
+    // changecolor();
+    // alert(color);
+    // //在Window函数中找不到 changecolor 和 temcolor
+
+
+    //块级作用域
+    // if (true) {
+    //     color = "blue"
+    // };
+    // alert(color);
+
+
+    //定义可选参数对象
+    // function displayinfor (args) {
+    //     var output = "";
+    //     if (typeof args.name =="string") {
+    //        output +="name:"+args.name+"\n" ;
+
+    //     }
+    //     if (typeof args.age == "number") {
+    //         output +="age:"+ args.age +"\n";
+    //     }
+    //     alert(output);
+    // }
+
+    // displayinfor({
+    //     name:"lm",
+    //     age:19
+    // });
+
+    
+    //将compare函数 传递给 sort 方法 给array 排序
+    // function compare (val1,val2) {
+    //     if (val1 <  ) {};
+    // }
+
+    // function setname (person) {
+    //     person.name = "ni.."
+    //     person = new object();
+    //     person.name = "gr..";
+    // }
+
+    // // setname(person);
+    // function setname (obj) {
+    //     obj.name = "ni";
+    //     obj = new object();
+    //     obj.name = "gr";
+    //     // alert(obj.name);
+    // }
+    // var person = new object();
+    // setname(person);
+    // alert(person.name);
+
+    //将函数对象当做值一样用
+    // function createcompare (propertyname) {
+    //     return function  (object1,object2) {
+    //         var value1 = object1[propertyname];
+    //         var value2 = object2[propertyname];
+    //         if (value1<value2) {
+    //             return -1;
+    //         } else if(value1>value2){
+    //             return 1;
+    //         }else{
+    //             return 0;
+    //         }
+    //     }
+    // }
+    // var data = [{name:"lm",age:25},{name:"mm",age:23}];
+    // // data.sort(createcompare("name"));
+    // data.sort();
+    // alert(data[0].name);
+    // data.sort(createcompare("age"));
+    // alert(data[0].name);
+
+    
+    // 函数内部属性 阶乘函数
+    // function factorial1 (num) {
+    //     if(num <=1){
+    //         return 1;
+    //     }else{
+    //         return num*factorial1(num-1)
+    //     }
+    // }
+    // function factorial2 (num) {
+    //     // console.log("34");
+    //     console.log(arguments);
+    //     // alert(object);
+    //     // console.log(arguments.callee(num-1));
+    //     if (num <=1 ) {
+    //         return 1;
+    //     } else{
+    //         return num*arguments.callee(num-1)
+    //     }
+
+    // }
+    // var value1 = factorial1(4);
+    // var value2 = factorial2(8);
+    // alert(value1);
+    // alert(value2);
+    // console.log("78");
+
+
+    //特殊基本类型的基本包装类型的应用
+    // var num = 10.09;
+    // alert(num.toFixed(2));
+
+/***********   创建对象      ************************/
+
+    //普通创建对象
+    // var box = new Object;
+    // box.name = "ll";
+    // box.age = "20"
+    // box.job = "doctor";//定义此对象的属性
+    // box.run = function  () {
+    //     return this.name+this.age;
+    // }//定义对象的方法
+    // console.log(box.run());//输出此对象的方法
+    // //缺点：想创建类似的对象 就会产生大量代码
+
+
+
+
+    //工厂模式创建对象
+    // function createbox (name,age,job) {
+    //     var o = new Object();
+    //     o.name = name;
+    //     o.age = age;
+    //     o.job = job
+    //     o.run = function () {
+    //         return( this.name+this.age);
+    //     };
+    //     return o;
+    //     }//创建函数体 函数体内创建对象
+    //     var box1=createbox("lm",21,"student");
+    //     var box2=createbox("mm",22,"worker");
+    //     //调用此函数体就是 创建此对象的实例
+    //     console.log(box1.run());
+        //缺点：函数体的命名和此对象的命名不好统一
+
+
+    //构造函数创建对象
+        // function Box (name,age,job) {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.job = job;
+        //     this.run = function  () {
+        //         return (this.name+this.age);
+        //     }
+        // }
+        // var box1 = new Box("ll",20,"doctor");
+        // var box2 = new Box("mm",21,"worker");
+        // console.log(box1);
+        // console.log(box1 instanceof Box);
+    //自定义一个新对象 后直接用new调用此函数创建对象实例
+    //缺点：每个方法都要在每个实例上重新创建一遍
+
+
+    //原型模式创建对象
+    // function Person () {
+    //     Person.prototype.name = "ll";
+    //     Person.prototype.age = 20;
+    //     Person.prototype.job = "student";
+    //     Person.prototype.sayname = function  () {
+    //         alert(this.name);
+    //     }
+    // }
+    // var person1 = new Person();
+    // var person2 = new Person();
+    // person1.sayname();//"ll"
+    // person2.sayname();// "ll"
+    //将共享的属性和方法都加到函数的prototype属性上，构造函数编程一个空函数
+
+    //————简化封装原型对象
+    // function Person () {
+    // }
+    // Person.prototype = {
+    //     constructor : Person,
+    //     name : "ll",
+    //     age : 20,
+    //     job : "student",
+    //     sayname : function  () {
+    //         alert(this.name);
+    //     }
+    // };
+    //将prototype中属性以对象字面量都封装起来 
+    //constructor属性失效
+    //原型模式缺点：共享属性
+
+
+
+    //组合使用构造函数模式和原型模式
+    // function Person (name,age,job) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.job = job;
+    //     this.friends = ["mm","oo"];
+    // }
+    // Person.prototype ={
+    //     constructor :Person,
+    //     sayname :function  () {
+    //         alert (this.name);
+    //     }
+    // }
+    // var person1 = new Person("ll","20","student");
+    // var person2 = new Person("mm","22","doc");
+    // alert(person1.friends+person2.friends);
+    // person1.sayname();
+    // person2.sayname();
+    //实例属性在构造函数中定义，共享属性和方法在原型中定义
+
+
+
+    //原型链继承
+    // function  SuperType() {
+    //     this.property = true;
+    //     this.name = "ll";
+    // }//用构造函数创建对象 SuperType 有个属性property
+    // SuperType.prototype.getSuperValue = function() {
+    //     return this.property;
+    // };//定义supertype的原型对象的方法getSuperValue
+    // function SubType () {
+    //     this.property = false;
+    // }//用构造函数创建对象 SubType
+    // SubType.prototype = new SuperType();//创建supertype实例 并将此实例赋给subtype的属性property
+    // SubType.prototype.getSubValue = function  () {
+    //     return this.property;
+    // };
+    // SubType.prototype.name="mm";
+    // var instance = new SubType();
+    // alert(instance.getSuperValue());//true
+    // alert(instance.name);
+
+    //递归函数：通过函数名字调用自身
+    // function factorial (num) {
+    //     if (num<=1) {
+    //         return 1;
+    //     } else{
+    //         return num*factorial(num-1);
+    //     }
+    // }
+    // var anotherfactorial = factorial;
+    // factorial = null;
+    // alert(anotherfactorial(3));//出错
+
+    // function factorial (num) {
+    //     if (num<=1) {
+    //         return true
+    //     } else{
+    //         return mum*arguments.callee(num-1);
+    //     }
+    // }
+
+    //闭包
+    //从外部读取局部变量
+    // function f1 () {
+    //     var n = 999;
+    //     function f2 () {
+    //         var m = 12;
+    //         alert(n);
+    //         alert(m);
+    //     };
+    //     // f2();
+        
+    //     return f2;
+        
+    // }
+    // var result = f1();
+    // result();
+    // f1();
+
+
+    // function f1 () {
+    // n=999;
+    // }
+    // f1();
+    // alert(n);
+   
+
+   //闭包让变量的值始终保存在内存中
+//     function f1 () {
+//         var n = 999;
+//         nadd = function  () {
+//             n+=1;
+//         }
+//         function f2 () {
+//             alert(n);
+//         }
+//         return f2;
+//     }
+//     var result = f1();//result 就是f2函数
+//     result();//调用f2函数 999
+//     nadd();//调用nadd函数 n+1
+//     result();//再次调用f2函数 1000
+// //这些函数都是全局变量 函数都在内存中 所以函数内的变量都存在内存中
+
+    
+    //this
+    // var name = "the window";
+    // var object = {
+    //     name : "my object",
+    //     getNameFunc : function  () {
+    //         return function  () {
+    //             return this.name;
+    //         };
+    //     }
+    // };
+    // var result = object.getNameFunc();
+    // alert(result());
+
+
+    //创建一个闭包
+    // function a () {
+    //     var i = 0;
+    //     function b () {
+    //         alert(++i);
+    //     }
+    //     return b;
+    // }
+    // var c =a();
+    // c();
+    //当函数a的内部函数b被a外的一个变量引用的时候，就创建了一个闭包
+
+
+    //函数的作用域是在定义函数的时候就已经确定而不是在执行的时候确定的
+    // var name="mm";
+    // function f () {
+    //     var name = "ll";
+    //     var g = function  () {
+    //         return this.name;
+    //     };
+    //     return g;
+    // }
+    // var h = f();
+    // alert (h());
+
+    // ??????
+    // function createFunction () {
+    //     var result = new Array();
+    //     for (var i = 0; i < 10; i++) {
+    //         result[i] = function  () {
+    //             return i;
+    //         };
+    //     }
+    //    for (var j = 0; j< 10; j++) {
+    //        return result[i];
+    //    };
+    // }
+    // var a = createFunction();
+    // console.log(a);
+
+
+    //dom操作
+    // function replaceMessage () {
+    //     var oNewp = document.createElement("p");
+    //     var otext = document.createTextNode("hello world");
+    //     oNewp.appendChild(otext);
+    //     var oOldp = document.body.getElementsByTagName("p")[0];
+    //     oOldp.parentNode.replaceChild(oNewp,oOldp);
+    // }
+
+    //js对css属性操作
+    // var obj = document.getElementById("cc");
+    // console.log(obj);
+    // // 读取css属性
+    // var bag = obj.style.background;
+    // console.log(bag);
+
+    // var content = document.getElementById("cc");
+    // console.log(content);
+
+    // drag.js:拖动绝对定位的html元素
+
+    // var omove = document.getElementById("cc");
+    // omove.addEventListener("click",function(e){
+    //     alert("third click");
+    // },false);
+    
+    //eventytil用法
+    // var EventUtil = {
+    //     addHandler:function  (element,type,handler) {
+    //         if (element.addEventListener) {
+    //             element.addEventListener(type,handler,false);
+    //         } else if(element.attachEvent){
+    //             element.attachEvent("on"+type.handler);
+    //         }else{
+    //             element["on"+type] = handler;
+    //         }
+    //     },
+    //     removeHandler:function  (element,type,handler) {
+    //         if (element.removEventListener) {
+    //             element.removEventListener(type,handler,false)
+    //         else if(element.detachEvent){
+    //                     element.detachEvent("on"+type.handler);
+    //             }
+    //         else{
+    //                 element["on"+type] = null;
+    //             }
+    //         }
+    //     }
+    
+
+    //动态创建html文档
+    // window.onload = function () {
+    //     var para = document.createElement("p");
+    //     var testdiv = document.getElementById("testdiv");
+    //     testdiv.appendChild(para);
+    //     var txt = document.createTextNode("hello");
+    //     para.appendChild(txt);
+    // }
+
+
+
+    // 编写insertafter()函数
+    // function inserafter(newElement,targetElement) {
+    //     var parent = targetElement.parentNode;
+    //     if (parent.lastChild == targetElement) {
+    //         parent.appendChild(newElement);
+    //     }
+    //     else {
+    //         parent.insertBefore(newElement,targetElement.nextSibling);
+    //     }
+    // }
+    
+     
+    //编写addclass()函数
+    // window.onload=function(){
+    //     function addClass(element,value) {
+    //     if (element.className == null) {
+    //         console.log( element.className);
+    //     }
+    //     else{
+    //         element.className += value;
+    //     }
+    // }
+    // var ele = document.getElementById("cc");
+    // addClass(ele,"ss");
+    // }
+   
+
+
+    // 获得下一个元素节点
+    // window.onload = function(){
+    //     function getNextElement(node) {
+    //     if(node.nextSibling && node.nextSibling.nodeType== 1){
+    //         return node.nextSibling;
+    //     }else{
+    //         return getNextElement(node.nextSibling);
+    //     }
+    //     return null;
+    //     }
+    //     var ele = document.getElementById("cc");
+    //     var eleNext = getNextElement(ele);
+    //     console.log(eleNext);
+    // } 
+    // 
+    
+
+    //一次移动位置
+    // window.onload=function(){
+    //     function moveMessage(){
+    //         var ele = document.getElementById("cc");
+    //         ele.style.left = "300px";
+    //     }
+    //     setTimeout(moveMessage,1000);
+    // }
+    
+
+    //渐变移动位置
+    // window.onload=function(){
+    //     function slowMove() {
+    //          var ele = document.getElementById("cc");
+    //          var nowLeft = document.defaultView.getComputedStyle(ele,null).left;
+    //          if (nowLeft == "300px") {
+    //             return null;
+    //          }
+    //          else{
+    //             setTimeout(function move(){
+    //                 var numLeft = parseInt(nowLeft) + 30;
+    //                 ele.style.left = numLeft+"px";
+    //                 slowMove();
+    //             },"50")
+            
+    //         } 
+    //     }
+    //     slowMove();
+    // }
+     
+     
+    //抽象此函数
+    // window.onload=function(){
+    //     function slowMove(ele,num,time) {
+    //          // var el = document.getElementById("cc");
+    //          var col = document.defaultView.getComputedStyle(ele,null);
+    //          console.log(col);
+    //          var nowLeft = window.getComputedStyle(ele,null).left;//有问题？？？
+    //          console.log(nowLeft);
+    //          if (nowLeft == num+"px") {
+    //             return null;
+    //          }
+    //          else{
+    //             setTimeout(function move(){
+    //                 var numLeft = parseInt(nowLeft) + 30;
+    //                 ele.style.left = numLeft + "px";
+    //                 slowMove();
+    //             },"time")
+            
+    //         } 
+    //     }
+    //     var element = document.getElementById("cc");
+    //     console.log(element);
+    //     slowMove(element,300,50);
+    // }
+    // 
+    // 
+    window.onload=function(){
+        function move(ele,time) {
+            function moveImg() {
+                var num = ele.getAttribute("alt") - 1;
+                var dis = document.getElementById("J_dis");
+                // console.log(num);
+                // console.log(ele.style.left);
+                dis.style.left = parseInt(document.defaultView.getComputedStyle(dis,null).left) - 154 + "px";
+            }
+            setTimeout(moveImg(),"time");
+        } 
+        var link = document.getElementsByTagName("a");
+        for (var i = 0; i < link.length; i++) {
+        link[i].onclick = function () {
+            // console.log(this.getAttribute("alt"));
+            move(this,"50");
+        }
+    }
+    }
+    
+    </script>
+     <style type="text/css">
+        .content{
+            width: 320px;
+            height:420px;
+            border: 2px solid #ddf;
+            margin: auto;
+            padding: 40px;
+        }
+        .content li{
+            width: 60px;
+            height: 30px;
+            float: left;
+        }
+        .dis{
+            margin-top: 30px;
+            width:154px;
+            height: 154px;
+            
+            overflow: hidden;
+            background:black;
+        }
+        img{
+            position: relative;
+            left: 0px;
+        }
+    </style>
+    
+</head>
+<body>
+    <p id="J_cli">123</p>
+    <div id="cc" class="content" >   
+        <ul >
+            <li><a href="javascript:;" alt=1>图1</a></li>
+            <li><a href="javascript:;" alt=2>图2</a></li>
+            <li><a href="javascript:;" alt=3>图3</a></li>
+            <li><a href="javascript:;" alt=4>图4</a></li>
+            <li><a href="javascript:;" alt=5>图5</a></li>  
+        </ul> 
+        <div class="dis" ><img src="../resources/img/1.jpg" id = "J_dis" alt=""></div>
+    </div> 
+    <p id="J_description">显示图片内容</p>
+    <div id="testdiv"></div>
+
+
+    <!-- <script type="text/javascript">
+    //     var omove = document.getElementById("cc");
+    //     omove.addEventListener("click",function(event){
+    //     console.log(event.pageX+event.clientX);
+    // },false);
+    // // childnodes用法
+    // var bodyele = document.getElementsByTagName("body")[0];
+    // 
+    // console.log(bodyele.childNodes);
+    // function showpic(whichpic) {
+    //     var source = whichpic.getAttribute("href");
+    //     var text = whichpic.getAttribute("title");
+    //     var placeholder = document.getElementById("J_placeholder");
+    //     placeholder.setAttribute("src",source);
+    //     var description = document.getElementById("J_description");
+    //     description.firstChild.nodeValue = text;
+    // }
+    // var cli = document.getElementById("J_cli");
+    // showpic(cli);
+    //
+    
+    
+    </script> 
+</body>
+</html>

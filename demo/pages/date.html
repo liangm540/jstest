@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>电子时钟</title>
+	<style type="text/css">
+		.clock{
+			width: 300px;
+			height: 30px;
+			text-align: center;
+			margin:20px auto;
+			padding: 20px 0;
+			background: black;
+			color: white;
+		}
+		span{
+			margin: 0px 10px;
+			padding: 0 20px;
+			line-height: 2px;
+			background: white;
+			color: black; 
+		}
+	</style>
+</head>
+<body onload='nowtime()'>
+	<div class="clock" >
+		<span id="hour"></span>时
+		<span id="minute"></span>分
+		<span id="second"></span>秒
+	</div>
+	<script>
+			function nowtime() {
+				var now = new Date();
+				var hour = now.getHours(),
+					minute = now.getMinutes(),
+					second = now.getSeconds();
+				var h = document.getElementById('hour'),
+					m = document.getElementById('minute'),
+					s = document.getElementById('second');
+				hour = check(hour);
+				minute = check(minute);
+				second = check(second);
+				h.innerHTML = hour;
+				m.innerHTML = minute;
+				s.innerHTML = second;
+				setTimeout('nowtime()',500);
+			};
+			function check(i) {
+				if (i<10) {
+					i = "0"+i;
+				}
+				return (i);
+			}
+	</script>
+</body>
+</html>

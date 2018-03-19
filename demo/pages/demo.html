@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function sAlert(){
+    var shield = document.createElement("DIV");
+    shield.id = "shield";
+    shield.style.position = "absolute";
+    shield.style.left = "0px";
+    shield.style.top = "0px";
+    shield.style.width = "100%";
+    shield.style.height = ((document.documentElement.clientHeight>document.documentElement.scrollHeight)?document.documentElement.clientHeight:document.documentElement.scrollHeight)+"px";
+    shield.style.background = "#000";
+    shield.style.textAlign = "center";
+    shield.style.zIndex = "10000";
+    shield.style.filter = "alpha(opacity=0)";
+    shield.style.opacity = 0;
+    
+    document.getElementById("alertFram").style.cssText = "position:absolute;width:588px;height:474px;text-align:center;z-index:10001;border: 6px solid #959595;top:"+(+25+document.documentElement.scrollTop)+"px"+";left:20%;background-color: #FFFFFF;" ;
+    document.body.appendChild(shield);
+    this.setOpacity = function(obj,opacity){
+        if(opacity>=1)opacity=opacity/100;
+        try{
+            obj.style.opacity=opacity;                                  //IE��Firefox�¶�������opacity��0.01��0.20
+        }catch(e){alert(opacity)}
+        try{ 
+            if(obj.filters.length>0&&obj.filters("alpha")){         
+                obj.filters("alpha").opacity=opacity*100;               //Firxfox��������,IE����
+            }else{
+                obj.style.filter="alpha(opacity=\""+(opacity*100)+"\")";//Firxfox��������,IE��������
+            }
+        }catch(e){}
+    }
+    var c = 0;
+    this.doAlpha = function(){
+        if (++c > 20){clearInterval(ad);return 0;}
+        setOpacity(shield,c);
+    }
+    var ad = setInterval("doAlpha()",1);
+    this.doClear = function(){
+        document.getElementById("alertFram").style.display = "none";
+        document.body.removeChild(shield);
+        //document.getElementById("select1").style.display='';
+        //window.location.reload();
+        
+}
+}   
+function $(idName){
+    return document.getElementById(idName);
+}
+function $F(idName){
+    return document.getElementById(idName).value;
+}
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

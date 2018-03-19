@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>判断是否为两位数</title>
+    <style type="text/css">
+        .con{
+            width: 100px;
+            height: 25px;
+            margin: 60px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="con">
+        <input type="text" id="j_val">
+        <input type="submit" value="是否为两位数" id="j_jud"> 
+    </div>
+    <script type="text/javascript">
+        var val = document.getElementById("j_val");
+        var jud = document.getElementById("j_jud");
+        console.log(val ,jud);
+        jud.onclick=function  () {
+            num = val.value;
+            console.log(num.length);
+            var patrn=/^[1-9]{1}[0-9]{1}$/;
+            if (isNaN(num)) {
+                alert("请输入数字")
+            } 
+            else if(patrn.exec(num)){
+                alert("yes 这是两位数");
+                }
+            else {
+                alert("no 这不是两位数");
+            }
+        }
+    </script>
+</body>
+</html>
