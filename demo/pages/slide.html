@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>幻灯片自动播放</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0
+	}
+		body{
+			background: black;
+		}
+		ul{
+			list-style: none;
+
+		}
+		.contain{
+			width: 520px;
+			height: 180px;
+			margin: 20px auto;
+			padding: 10px 0;
+			background: white;
+			border-radius: 5px;
+			border: 2px solid white;
+		}
+		.slide{
+			position: relative;
+			width: 490px;
+			height: 170px;
+			margin: 0px auto;
+			border: 1px solid gray;
+
+		}
+		.num{
+			position: absolute;
+			bottom:5px;
+			right:5px;
+		}
+		.num li{
+			color: white;
+			margin-right: 5px;
+			width:18px;
+			height:18px;
+			line-height: 18px;
+			text-align: center;
+			border-radius: 50%;
+			background: pink;
+			cursor: pointer;
+			float: left;
+		}
+		a{
+			text-decoration: none;
+			color: white;
+		}
+		.pic li{
+			display: none;
+
+		}
+		.show{
+			display: block!important;
+		}
+		.color{
+			background: purple!important;
+		}
+	</style>
+</head>
+<body>
+	<div class="contain">
+		<div class="slide" id="slide">
+			<ul class="pic" id="pic">
+				<li >
+					<img src="" presrc="../resources/img/01.jpg">
+				</li>
+				<li>
+					<img src="" presrc="../resources/img/02.jpg">
+				</li>
+				<li>
+					<img src="" presrc="../resources/img/03.jpg">
+				</li>
+				<li>
+					<img src="" presrc="../resources/img/04.jpg">
+				</li>
+			</ul>
+			<ul class="num" id="num">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+		window.onload = function slide() {
+			var num = document.getElementById('num');
+			var pic = document.getElementById('pic');
+			var slide = document.getElementById('slide');
+			var img = document.getElementsByTagName('img');
+			img[0].src = img[0].getAttribute('presrc');
+			pic.children[0].classList.add('show');
+			var n =0;
+			for (let i = 0; i < num.children.length; i++) {
+				num.children[i].onmouseover = function () {
+					show(i);
+				};
+			};
+			// 移入数字列表停止自动播放 移除=出再开始
+			num.onmouseover=function (){
+				clearInterval(play);
+			};
+			num.onmouseout = function () {
+				console.log('ad');
+				autoplay();
+			};
+			//显示第n个
+			function show(m) {
+				for (let j=0; j < pic.children.length; j++){
+					img[j].src ='';
+					pic.children[j].classList.remove('show');
+					num.children[j].classList.remove('color');
+				}
+				img[m].src = img[m].getAttribute('presrc');
+				num.children[m].classList.add('color');
+				pic.children[m].classList.add('show');
+				
+	
+			};
+			//自动播放效果	
+			function autoplay() {
+				play = setInterval(function () {
+					show(n);
+					n++;
+					console.log(n);
+					if (n == pic.children.length) {
+						n = 0;
+					};
+					console.log(n);
+				},2000);
+			};
+		// 开始就自动播放
+		autoplay();
+		}
+		
+	</script>
+</body>
+</html>

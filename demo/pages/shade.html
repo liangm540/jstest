@@ -94,11 +94,9 @@
         };
         contain.onclick = function (e) {
 
-            //立即停止事件的传播
-            // e.stopPropagation();
+            // 立即停止事件的传播,即仅发生在这个元素上
+            e.stopPropagation();
         }
-
-
    </script>
 </body>
 </html>
